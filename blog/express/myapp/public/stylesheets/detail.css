@@ -1,0 +1,51 @@
+@charset "gb2312";
+/* CSS Document */
+body,ul,div,img,h5,h4,h3,h2,h1,p,span,table,figure,i,li{ margin:0; padding:0}
+a:link, a:visited {text-decoration: none; } 
+img{ border:0}
+body{font-size:12px;background:#d8e8f7 url(../images/bg2.jpg) 50% top scroll no-repeat;color:#5d5d5d; background-size: 100% 200px} 
+.blank{ height:5px; overflow:hidden; width:100%; margin:auto; clear:both}
+.article{width:1030px;margin:0 auto;  overflow:auto; }
+header{ padding:40px 0; width:1000px;  margin:auto; }
+header h1{ font-size:36px; text-shadow:#fff 1px 1px 1px; font-family:'Arizonia', cursive;} /* google 锟斤拷锟斤拷锟斤拷锟斤拷 Arizonia */
+header h1 a{color:#000;-webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;}
+header h1 a:hover{ padding-left:20px}
+header p{margin:17px 0 0 0;text-shadow:#000 1px 1px 1px;color:#fff;font-size: 14px;}
+#nav{ width:100%;line-height:40px; height:40px;margin:auto; background:rgba(245,245,245,0.2) }/* nav圆锟角憋拷锟斤拷 rgba 透锟斤拷锟斤拷0.2 */
+#nav ul{ list-style:none; margin:auto; width:1030px}
+#nav ul li{ float:left; width:100px; text-align:center;text-shadow:#333 1px 1px 1px}
+#nav ul li a{ display:block; color:#FFF;font-size: 14px; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; -ms-transition: all 0.5s;}/* 锟斤拷锟斤拷锟斤拷色锟斤拷锟叫э拷锟�*/
+#nav ul li a:hover{ background:#e15782; color: #FFF; font-weight:bold; border-radius:50px 0}
+#nav ul li a#nav_current {background: #e15782;color: #FFF; font-weight:bold; border-radius:50px 0;} /* nav锟斤拷锟斤拷锟斤拷示锟斤拷锟斤拷锟斤拷色 */
+.content{ width:725px; float:left; background: #f2f5f2;border: 1px solid #fff;font-size: 16px;padding: 10px;font-family: "宋体";}/* left form */
+/*--------锟狡硷拷锟斤拷锟斤拷-------*/
+.topblog{ overflow:hidden;}
+.topblog h3{  border-bottom:#FFF 1px solid; width:100%;overflow:hidden; font-size:14px; margin:0 0 10px 0; font-family:"微锟斤拷锟脚猴拷"}
+.topblog h3 p{ background:#9ACC99; width:180px; height:25px; margin:15px 0 0 10px; line-height:25px; height:25px; color:#fff; text-align:center; box-shadow: #999 4px 5px 1px;}
+
+/* Side Right */
+aside{ width:276px; float:right; overflow:hidden;}
+aside.navsidebar nav{ height:130px; margin-top:60px}  /* 锟斤拷色锟斤拷 */
+aside nav a{display: block;font-weight: bold;letter-spacing: 8px; width: 150px;height: 30px;background:#f8c9d3;border-radius: 20px;text-align: center;font-size: 18px;color: #FFFFFF;margin:30px auto;line-height: 30px;}
+
+aside nav ul li a{ display:block; color:#FFF;-webkit-transition: all 1s;-moz-transition: all 1s;-ms-transition: all 1s;-o-transition: all 1s;transition: all 1s;- }
+aside nav ul li a:hover{font-weight:bold; color:#FF0;moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg);-ms-transform:rotate(360deg); }
+.slide{margin:5px 0; width:100%}/* 锟矫碉拷片 */
+.slide img{  height:200px}
+.vcard{ margin:10px 0; padding:10px} /* 锟斤拷锟剿硷拷锟�google vcard */
+.vcard p{ line-height:25px}
+.vcard p a{ color:#099;text-decoration:underline}
+aside h2{  border-bottom:#FFF 1px solid; width:100%;overflow:hidden; font-size:14px; margin:10px 0; font-family:"微锟斤拷锟脚猴拷"}
+aside h2 p{ background:#CDCC34; width:180px; height:25px; margin:15px 0 0 10px; line-height:25px; height:25px; color:#fff; text-align:center; box-shadow: #999 4px 5px 1px;font-size: 16px;}
+.news{ padding:10px; list-style:none;}
+.news li{ overflow: hidden;white-space: nowrap;text-overflow: ellipsis; background:url(../images/list.gif) left no-repeat; padding-left:20px}
+.news li a{ color: #666;font-size: 14px; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; -ms-transition: all 0.5s; display:block;line-height:22px; height:22px}
+.news li a:hover{color:#000; padding-left:20px; }
+.blog{ color:#FFF; background:rgba(154,204,153,0.5);border-radius: 20px;-moz-border-radius: 20px;-webkit-border-radius: 20px; overflow:hidden; margin:20px 0;}
+.blog h2{ color:#FFF; line-height:40px; height:40px; font-size:32px;font-family:'Arizonia', cursive; padding-left:20px}
+.blog img{ float:left; clear:left; width:300px; border:#FFF 4px solid; margin: 0 20px 10px 10px}
+.title{ margin-bottom:20px;}
+.title a{ font-size:16px;color:#FFF; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; -ms-transition: all 0.5s; text-shadow:#3F7C9B 1px 1px 1px}
+.title a:hover{ padding-left:30px;}
+.blog ul{ padding:10px}
+.blog ul p{ line-height:24px; margin-bottom:15px;font-size: 14px;}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>刘艺个人博客</title>
+		<link href="../myapp/public/stylesheets/index.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+		<!--<link rel="shortcut icon" href="">-->
+		<link rel="shortcut icon"  href="../myapp/public/images/tp.jpg"/>
+	</head>
+	<body>
+	<header>
+  <h1><a href="/">Liu Yi's Personal Blog</a></h1>
+  <p>人生最精彩的不是成功的那一瞬间，而是回头看，那段漆黑看似没有尽头、苦苦摸索的过程。 ——by 刘艺</p>
+</header>
+<div id="nav">
+     <ul>
+       <li><a href="index.html">网站首页</a></li>
+       <li><a href="about.html">关于我</a></li>
+       <li><a href="moodlist.html">碎言碎语</a></li>
+       <li><a href="newlist.html">技术探讨</a></li>
+       <li><a href="newlist.html">慢生活</a></li>
+       <li><a href="ablumlist.html">我的相册</a></li>
+       <li><a href="book.html">留言板</a></li>
+     </ul>
+     <script src="../myapp/public/javascripts/silder.js"></script>
+</div>
+<div class="blank"></div>
+<div class="article">
+  <div class="content">
+    <div class="topblog">
+      <h3><p>推荐文章 New Blog</p></h3>
+     <img src="../myapp/public/images/03.jpg" alt="" title="" width="315" height="205">
+      <ul class="tuijian">
+
+      </ul>
+     </div> 
+    <div class="bloglist">
+  <!--article begin-->
+     
+
+  <!--article end-->  
+    </div> 
+  </div>  
+<aside class="navsidebar">
+   <nav>
+   		<a href="http://localhost:3000/login">登录</a>
+   		<a href="/regist">注册</a>
+   </nav>
+   <div class="slide"></div>
+   <h2><p>博客分类</p></h2>
+<ul class="news">
+  <li><a href="/">慢生活(3)</a></li>
+  <li><a href="/">程序人生(25)</a></li>
+  <li><a href="/">经典美文(39)</a></li>
+</ul>
+<h2><p>近期文章</p></h2>
+<ul class="news recent">
+  
+</ul>
+
+
+</aside>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="jquery-1.11.0.js" ></script>
+<script>
+	$.ajax({
+			type:"get",
+			url:"http://localhost:3000/article/articlesList",
+			success:function(data){
+			  //console.log(JSON.parse(data))
+			  for(var item of JSON.parse(data)){
+			    $(".bloglist").append(`
+			       <div class="blog">
+				      <h2>Life</h2> 
+				      <ul>
+				        <img src="./../myapp/public/images/01.jpg"><h3 class="title"><a target="_blank" href="detail.html?articleId=${item.articleId}" id="pic01">${item.title}</a></h3>
+				        <p><a href="detail.html?articleId=${item.articleId}" style="color:#fff">${item.des}</a></p>
+				      </ul>
+				    </div>`)
+			    $(".recent").append(`
+			    	<li><a target="_blank" href="detail.html?articleId=${item.articleId}">${item.title}</a></li>
+			    `)
+			    
+			  }
+			}
+		});
+		$.ajax({
+			type:"post",
+			url:"http://localhost:3000/article/articleRecommend",
+			success:function(data){
+				for(var item of JSON.parse(data)){
+					$(".tuijian").append(`
+				    	<li><a target="_blank" href="detail.html?articleId=${item.articleId}">${item.title}<span>${item.type}</span></a></li>	
+				    `)
+				}
+			}
+		});
+</script>

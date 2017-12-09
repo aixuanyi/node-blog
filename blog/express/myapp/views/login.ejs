@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>我的博客</title>
+
+    <link rel="stylesheet" href="/stylesheets/loginstyle.css">
+  </head>
+  <body>
+   
+      <div class="page-container">
+            <h1>Login</h1>
+            <form>
+                <input type="text" name="username" id="username" class="username" placeholder="Username">
+                <input type="password" name="pwd" id="pwd" class="password" placeholder="Password">
+                <input type="button" id="btn" value="Sign in">
+                
+            </form>
+            
+        </div>
+    
+  </body>
+</html>
+<script type="text/javascript" src="/javascripts/jquery-1.11.0.js" ></script>
+<script>
+	 $("#btn").on('click',function(){
+	 		$.ajax({
+	 			type:"post",
+	 			url:"/users/loginAction",
+	 			data:$("form").serialize(),
+	 			success:function(data){
+	 				console.log(data)
+	 				if(data == 1){
+	 					window.location.href='/';
+	 				}
+	 			}
+	 		})
+	 })
+</script>

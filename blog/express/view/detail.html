@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="../myapp/public/stylesheets/detail.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+		<link rel="shortcut icon"  href="../myapp/public/images/tp.jpg"/>
+	</head>
+	<body>
+	<header>
+  <h1><a href="/">Liu Yi's Personal Blog</a></h1>
+  <p>人生最精彩的不是成功的那一瞬间，而是回头看，那段漆黑看似没有尽头、苦苦摸索的过程。 ——by 刘艺</p>
+</header>
+<div id="nav">
+     <ul>
+       <li><a href="index.html">网站首页</a></li>
+       <li><a href="about.html">关于我</a></li>
+       <li><a href="moodlist.html">碎言碎语</a></li>
+       <li><a href="newlist.html">技术探讨</a></li>
+       <li><a href="newlist.html">慢生活</a></li>
+       <li><a href="ablumlist.html">我的相册</a></li>
+       <li><a href="book.html">留言板</a></li>
+     </ul>
+     <script src="../myapp/public/javascripts/silder.js"></script>
+</div>
+<div class="blank"></div>
+<div class="article">
+  <div class="content">
+  	 <div class="topblog">
+      <h3><p>首页 > 唯美散文</p></h3>
+     </div>
+    <div class="main">
+  <!--article begin-->
+    </div> 
+  </div>  
+<aside class="navsidebar">
+  
+   <div class="slide"></div>
+   <h2><p>博客分类</p></h2>
+<ul class="news">
+  <li><a href="/">慢生活(3)</a></li>
+  <li><a href="/">程序人生(25)</a></li>
+  <li><a href="/">经典美文(39)</a></li>
+</ul>
+<h2><p>近期文章</p></h2>
+<ul class="news recent">
+  
+</ul>
+
+
+</aside>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="jquery-1.11.0.js" ></script>
+<script>
+	$.ajax({
+		type:"post",
+		url:"http://localhost:3000/article/articleDetail",
+		data:{
+			  articleId:location.search.split("=")[1]
+			},
+		success:function(data){
+		 // console.log(data)
+		  var result = JSON.parse(data)
+		  
+		  $(".main").html(result[0].html)
+		  $("title").html(result[0].title)
+		  
+		}
+		
+	});
+	$.ajax({
+			type:"get",
+			url:"http://localhost:3000/article/articlesList",
+			success:function(data){
+			  //console.log(JSON.parse(data))
+			  for(var item of JSON.parse(data)){
+			   
+			    $(".recent").append(`
+			    	<li><a target="_blank" href="detail.html?articleId=${item.articleId}">${item.title}</a></li>
+			    `)
+			  }
+			}
+		});
+</script>

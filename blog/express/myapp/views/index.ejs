@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<link href="/stylesheets/bootstrap.css" rel="stylesheet">
+		<link href="/stylesheets/site.css" rel="stylesheet">
+	    <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+	    
+	    <script src="/ueditor/ueditor.config.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/ueditor/ueditor.all.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/ueditor/zh-cn/zh-cn.js" type="text/javascript" charset="utf-8"></script>
+    <title><%= title %></title>
+	</head>
+	<body>
+	<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">我的博客</a>
+          <div class="btn-group pull-right">
+			<a class="btn" href="#"><%= username %></a>
+            <a class="logout" href="/users/logout">退出</a>
+          </div>
+     
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Article</li>
+              <li class="active"><a href="/">文章添加</a></li>
+              <li><a href="/article">文章列表</a></li>
+              <li class="nav-header">Profile</li>
+              <li><a href="my-profile.html">我的简历</a></li>
+              <li><a href="#">设置</a></li>
+			  <li><a href="/users/logout">退出</a></li> 
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+      
+          
+		  <div class="row-fluid">
+			<div class="page-header">
+				<h1>Articles <small>Adding Aritcles</small></h1>
+			</div>
+			<section>
+	          <input type="text" name="title" id="title" value="" placeholder="标题"/>
+	          <input type="text" name="author" id="author" value="" placeholder="作者"/>
+	          <input type="url" name="url" id="url" value="" placeholder="转载自..."/>
+	          <script id="box" name="content" type="text/plain"></script>
+	          <button id="btn" style="margin-top: 10px;">提交</button>
+	        </section>
+		  </div>
+        </div>
+      </div>
+
+      <hr>
+    </div>
+  </body>
+</html>
+<script src="/javascripts/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	 var ue = UE.getEditor('box', {
+        initialFrameWidth : 800,//默认宽度
+        initialFrameHeight: 300//默认高度
+      });
+      $('#btn').on('click',function(){
+      	var html = ue.getContent();
+      	$.ajax({
+      		type:"post",
+      		url:"/article/addAritcles",
+      		data:{
+      			title:$("#title").val(),
+      			author:$("#author").val(),
+      			url:$("#url").val(),
+      			html:html,
+      			date:new Date().getTime()
+      		},
+      		success:function(data){
+      			console.log(data)
+      			$("#title").val("");
+      			$("#author").val("");
+      			$("#url").val("");
+      			ue.setContent("");
+      		}
+      	});
+      })
+</script>
